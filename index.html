@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real-Time Clock</title>
+	<meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+            color: #555;
+        }
+
+        #current-time {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>대기페이지</h1>
+    <p>현재 원활한 웹 서비스 운영을 위한 대기 페이지입니다.</p>
+
+    <br>
+    <p>현재 시간: <span id="current-time"></span></p>
+
+    <script>
+        // 현재 시간을 업데이트하고 표시하는 함수
+        function updateClock() {
+            const currentTime = new Date();
+            const hours = currentTime.getHours();
+            const minutes = currentTime.getMinutes();
+            const seconds = currentTime.getSeconds();
+
+            const formattedTime = `${hours}:${minutes}:${seconds}`;
+            
+            const timeElement = document.getElementById("current-time");
+            timeElement.textContent = formattedTime;
+        }
+
+        // 페이지가 로드될 때 시계 업데이트 함수를 호출하고 1초마다 갱신
+        window.onload = function () {
+            updateClock(); // 초기 표시
+            setInterval(updateClock, 1000); // 1초마다 업데이트
+        };
+    </script>
+</body>
+</html>
